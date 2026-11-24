@@ -1,5 +1,5 @@
 // Offline cache for 跳墙闯关. Bump VERSION when you upload a new index.html so phones pick it up.
-const VERSION = 'wallhop-v12';
+const VERSION = 'wallhop-v13';
 const CORE = ['./', './index.html', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png', './icons/maskable-512.png', './icons/apple-180.png'];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(VERSION).then(c => c.addAll(CORE)).then(() => self.skipWaiting()));
