@@ -80,13 +80,13 @@ window.SHOP = {
       {box:[.09,.12,.02], at:[ .12,.36,.28], color:'#111111'} ]},
 
     // ---------- tools (interactive) ----------
-    {id:'b-wood',   cat:'tool', tool:'block', name:'木板方块', icon:'🟫', price:15, amount:1, look:'wood',   about:'在起点草地上盖房子'},
-    {id:'b-brick',  cat:'tool', tool:'block', name:'红砖方块', icon:'🧱', price:20, amount:1, look:'bricks'},
-    {id:'b-stone',  cat:'tool', tool:'block', name:'石头方块', icon:'🪨', price:15, amount:1, look:'cobble'},
-    {id:'b-wool-b', cat:'tool', tool:'block', name:'蓝色羊毛', icon:'🟦', price:15, amount:1, look:'wool', color:'#4dabf7'},
-    {id:'b-leaf',   cat:'tool', tool:'block', name:'树叶方块', icon:'🌿', price:15, amount:1, look:'leaves'},
-    {id:'b-plaid',  cat:'tool', tool:'block', name:'格子方块', icon:'plaid-icon.png', price:1, amount:1, texture:'plaid-shirt.png'},
-    {id:'jumppad',  cat:'tool', tool:'pad',   name:'弹跳板',   icon:'🟩', price:60, power:1, max:3, color:'#2fb34a', about:'踩上去弹得好高'},
-    {id:'bridgeegg',cat:'tool', tool:'egg',   name:'搭桥蛋',   icon:'🥚', price:30, amount:1, length:12, lasts:25, look:'wool', color:'#ffffff', about:'往前铺一条桥，25 秒后消失'}
+    {id:'b-wood',   cat:'tool', tool:'block', name:'木板方块', icon:'🟫', price:15, amount:20, look:'wood',   about:'在起点草地上盖房子'},
+    {id:'b-brick',  cat:'tool', tool:'block', name:'红砖方块', icon:'🧱', price:20, amount:20, look:'bricks'},
+    {id:'b-stone',  cat:'tool', tool:'block', name:'石头方块', icon:'🪨', price:15, amount:20, look:'cobble'},
+    {id:'b-wool-b', cat:'tool', tool:'block', name:'蓝色羊毛', icon:'🟦', price:15, amount:20, look:'wool', color:'#4dabf7'},
+    {id:'b-leaf',   cat:'tool', tool:'block', name:'树叶方块', icon:'🌿', price:15, amount:20, look:'leaves'},
+    {id:'b-plaid',  cat:'tool', tool:'block', name:'格子方块', icon:'plaid-icon.png', price:25, amount:20, texture:'plaid-shirt.png'},
+    {id:'jumppad',  cat:'tool', tool:'pad',   name:'弹跳板',   icon:'🟩', price:60, power:15, max:3, color:'#2fb34a', about:'踩上去弹得好高'},
+    {id:'bridgeegg',cat:'tool', tool:'egg',   name:'搭桥蛋',   icon:'🥚', price:30, amount:3, length:12, lasts:25, look:'wool', color:'#ffffff', about:'往前铺一条桥，25 秒后消失'}
   ]
 };
