@@ -85,7 +85,7 @@ window.SHOP = {
     {id:'b-stone',  cat:'tool', tool:'block', name:'石头方块', icon:'🪨', price:15, amount:1, look:'cobble'},
     {id:'b-wool-b', cat:'tool', tool:'block', name:'蓝色羊毛', icon:'🟦', price:15, amount:1, look:'wool', color:'#4dabf7'},
     {id:'b-leaf',   cat:'tool', tool:'block', name:'树叶方块', icon:'🌿', price:15, amount:1, look:'leaves'},
-    {id:'b-plaid',  cat:'tool', tool:'block', name:'格子方块', icon:'plaid-icon.png', price:1, amount:20, texture:'plaid-shirt.png'},
+    {id:'b-plaid',  cat:'tool', tool:'block', name:'格子方块', icon:'plaid-icon.png', price:1, amount:1, texture:'plaid-shirt.png'},
     {id:'jumppad',  cat:'tool', tool:'pad',   name:'弹跳板',   icon:'🟩', price:60, power:1, max:3, color:'#2fb34a', about:'踩上去弹得好高'},
     {id:'bridgeegg',cat:'tool', tool:'egg',   name:'搭桥蛋',   icon:'🥚', price:30, amount:1, length:12, lasts:25, look:'wool', color:'#ffffff', about:'往前铺一条桥，25 秒后消失'}
   ]
