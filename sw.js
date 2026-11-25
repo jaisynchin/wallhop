@@ -1,9 +1,9 @@
 // Offline cache for 跳墙闯关. Bump VERSION when you upload a new index.html so phones pick it up.
 // Files in shop/ (items.js, graphics) are fetched fresh whenever online, so editing them needs no VERSION bump.
-const VERSION = 'wallhop-v18';
-const CORE = ['./', './index.html', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png', './icons/maskable-512.png', './icons/apple-180.png', './shop/graphics/plaid-icon.png', './shop/graphics/plaid-shirt.png', './shop/items.js'];
+const VERSION = 'wallhop-v19';
+const CORE = ['./', './index.html', './manifest.webmanifest', './apple-180.png', './icon-192.png', './icon-512.png', './items.js', './maskable-512.png', './plaid-icon.png', './plaid-shirt.png'];
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open(VERSION).then(c => c.addAll(CORE)).then(() => self.skipWaiting()));
+  e.waitUntil(caches.open(VERSION).then(c => Promise.all(CORE.map(u => c.add(u).catch(() => null)))).then(() => self.skipWaiting()));
 });
 self.addEventListener('activate', e => {
   e.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => k !== VERSION).map(k => caches.delete(k)))).then(() => self.clients.claim()));
@@ -19,7 +19,7 @@ self.addEventListener('fetch', e => {
     return;
   }
   // store items + pictures: network first so edits show up, cache when offline
-  if (url.origin === location.origin && url.pathname.includes('/shop/')) {
+  if (url.origin === location.origin && (url.pathname.includes('/shop/')||/items\.js$|\.png$/.test(url.pathname))) {
     e.respondWith(fetch(req).then(r => { if (r && r.ok) { const copy = r.clone(); caches.open(VERSION).then(c => c.put(req, copy)); } return r; })
       .catch(() => caches.match(req)));
     return;
