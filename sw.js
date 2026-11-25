@@ -1,6 +1,7 @@
 // Offline cache for 跳墙闯关. Bump VERSION when you upload a new index.html so phones pick it up.
-const VERSION = 'wallhop-v13';
-const CORE = ['./', './index.html', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png', './icons/maskable-512.png', './icons/apple-180.png'];
+// Files in shop/ (items.js, graphics) are fetched fresh whenever online, so editing them needs no VERSION bump.
+const VERSION = 'wallhop-v18';
+const CORE = ['./', './index.html', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png', './icons/maskable-512.png', './icons/apple-180.png', './shop/graphics/plaid-icon.png', './shop/graphics/plaid-shirt.png', './shop/items.js'];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(VERSION).then(c => c.addAll(CORE)).then(() => self.skipWaiting()));
 });
@@ -15,6 +16,12 @@ self.addEventListener('fetch', e => {
   if (req.mode === 'navigate') {
     e.respondWith(fetch(req).then(r => { const copy = r.clone(); caches.open(VERSION).then(c => c.put('./index.html', copy)); return r; })
       .catch(() => caches.match('./index.html')));
+    return;
+  }
+  // store items + pictures: network first so edits show up, cache when offline
+  if (url.origin === location.origin && url.pathname.includes('/shop/')) {
+    e.respondWith(fetch(req).then(r => { if (r && r.ok) { const copy = r.clone(); caches.open(VERSION).then(c => c.put(req, copy)); } return r; })
+      .catch(() => caches.match(req)));
     return;
   }
   // everything else (icons, Google Fonts): cache first, then network, and keep a copy
